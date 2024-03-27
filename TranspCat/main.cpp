@@ -8,7 +8,11 @@ using namespace std;
 
 int main() {
     TransportCatalogue catalogue;
-    
+    Stop s{ "123", Coordinates {123, 123} };
+    catalogue.AddStop(s.name, s.coord);
+    auto s1 = catalogue.FindStop("123");
+
+    cout << s1->name << " " << s1->coord.lat << " " << s1->coord.lng << endl;
     
     /*
     int base_request_count;

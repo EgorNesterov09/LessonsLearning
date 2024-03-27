@@ -1,10 +1,12 @@
 #pragma once
 
-#include <strung>
+#include <string>
 #include <vector>
 #include <deque>
 #include <unordered_map>
 #include <string_view>
+
+#include "geo.h"
 
 struct Stop {
     std::string name;
@@ -20,10 +22,10 @@ struct Bus {
 class TransportCatalogue {
 	// Реализуйте класс самостоятельно
 public:
-    AddStop
-    FindStop
-    AddBus
-    FindBus
+    void AddStop(const std::string& name, const Coordinates& coord);
+    const Stop* FindStop(const std::string_view name) const;
+    //AddBus
+    //FindBus
     
 private:       
     std::deque<Stop> stops_; //номенклатура остановок
