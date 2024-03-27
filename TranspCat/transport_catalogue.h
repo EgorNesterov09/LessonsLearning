@@ -22,7 +22,7 @@ struct Bus {
 class TransportCatalogue {
 	// Реализуйте класс самостоятельно
 public:
-    void AddStop(const std::string& name, const Coordinates& coord);
+    void AddStop(Stop&& s);
     const Stop* FindStop(const std::string_view name) const;
     //AddBus
     //FindBus

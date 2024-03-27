@@ -8,13 +8,14 @@ using namespace std;
 
 int main() {
     TransportCatalogue catalogue;
+    /*
     Stop s{ "123", Coordinates {123, 123} };
     catalogue.AddStop(s.name, s.coord);
     auto s1 = catalogue.FindStop("123");
 
     cout << s1->name << " " << s1->coord.lat << " " << s1->coord.lng << endl;
+    */
     
-    /*
     int base_request_count;
     cin >> base_request_count >> ws;
 
@@ -28,6 +29,12 @@ int main() {
         reader.ApplyCommands(catalogue);
     }
 
+    
+    auto s1 = catalogue.FindStop("Tolstopaltsevo");
+    cout << s1->name << " " << s1->coord.lat << " " << s1->coord.lng << endl;
+    auto s2 = catalogue.FindStop("Marushkino");
+    cout << s2->name << " " << s2->coord.lat << " " << s2->coord.lng << endl;
+    /*
     int stat_request_count;
     cin >> stat_request_count >> ws;
     for (int i = 0; i < stat_request_count; ++i) {

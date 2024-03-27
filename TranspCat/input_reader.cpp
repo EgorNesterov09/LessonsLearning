@@ -104,4 +104,15 @@ void InputReader::ParseLine(std::string_view line) {
 
 void InputReader::ApplyCommands([[maybe_unused]] TransportCatalogue& catalogue) const {
     // Реализуйте метод самостоятельно
+    for (const auto& com : commands_) {
+        if (com.command == "Stop") {
+            Stop s{ com.id, ParseCoordinates(com.description) };
+            catalogue.AddStop(std::move(s));
+        }
+    }
+    for (const auto& com : commands_) {
+        if (com.command == "Bus") {
+
+        }
+    }
 }
