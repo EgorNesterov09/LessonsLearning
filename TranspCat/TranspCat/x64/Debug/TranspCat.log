@@ -1,4 +1,5 @@
-﻿  input_reader.cpp
+﻿  main.cpp
+  stat_reader.cpp
   transport_catalogue.cpp
   Generating Code...
   TranspCat.vcxproj -> C:\Users\egor.nesterov\Desktop\LessonsLearning\TranspCat\x64\Debug\TranspCat.exe

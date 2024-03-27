@@ -34,6 +34,19 @@ int main() {
     cout << s1->name << " " << s1->coord.lat << " " << s1->coord.lng << endl;
     auto s2 = catalogue.FindStop("Marushkino");
     cout << s2->name << " " << s2->coord.lat << " " << s2->coord.lng << endl;
+    
+    auto b1 = catalogue.FindBus("256");
+    cout << b1->name << ": ";
+    for (const auto a : b1->route) {
+        cout << a->name << " ";
+    } cout << endl;
+
+    auto b2 = catalogue.FindBus("750");
+    cout << b2->name << ": ";
+    for (const auto a : b2->route) {
+        cout << a->name << " ";
+    }
+    
     /*
     int stat_request_count;
     cin >> stat_request_count >> ws;

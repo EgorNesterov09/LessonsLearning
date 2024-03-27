@@ -112,7 +112,13 @@ void InputReader::ApplyCommands([[maybe_unused]] TransportCatalogue& catalogue) 
     }
     for (const auto& com : commands_) {
         if (com.command == "Bus") {
+            std::vector<Stop*> vec;
+            for (const auto a : ParseRoute(com.description)) {
+                vec.push_back(catalogue.FindStop(a));
+            }
 
+            Bus b{ com.id,  std::move(vec)};
+            catalogue.AddBus(std::move(b));
         }
     }
 }

@@ -23,9 +23,9 @@ class TransportCatalogue {
 	// Реализуйте класс самостоятельно
 public:
     void AddStop(Stop&& s);
-    const Stop* FindStop(const std::string_view name) const;
-    //AddBus
-    //FindBus
+    Stop* FindStop(const std::string_view name) const;
+    void AddBus(Bus&& b);
+    Bus* FindBus(const std::string_view name) const;
     
 private:       
     std::deque<Stop> stops_; //номенклатура остановок
