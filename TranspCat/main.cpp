@@ -29,7 +29,7 @@ int main() {
         reader.ApplyCommands(catalogue);
     }
 
-    
+    /*
     auto s1 = catalogue.FindStop("Tolstopaltsevo");
     cout << s1->name << " " << s1->coord.lat << " " << s1->coord.lng << endl;
     auto s2 = catalogue.FindStop("Marushkino");
@@ -46,13 +46,13 @@ int main() {
     for (const auto a : b2->route) {
         cout << a->name << " ";
     }
+    */
     
-    /*
     int stat_request_count;
     cin >> stat_request_count >> ws;
     for (int i = 0; i < stat_request_count; ++i) {
         string line;
         getline(cin, line);
         ParseAndPrintStat(catalogue, line, cout);
-    } */
+    } 
 }
