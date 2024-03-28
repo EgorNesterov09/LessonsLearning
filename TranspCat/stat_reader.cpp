@@ -6,7 +6,7 @@
 #include <set>
 
 void ParseAndPrintStat(const TransportCatalogue& tansport_catalogue, std::string_view request,
-                       std::ostream& output) {
+    std::ostream& output) {
     // Реализуйте самостоятельно
     if (request.find("Bus") != request.npos) {
         std::string_view query_descripton = request.substr(3);
@@ -29,5 +29,28 @@ void ParseAndPrintStat(const TransportCatalogue& tansport_catalogue, std::string
             output << "Bus " << s << ": " << R << " stops on route, " << U << " unique stops, " << L << " route length" << std::endl;
         }
     }
-    
+    else if (request.find("Stop") != request.npos) {
+        std::string_view query_descripton = request.substr(4);
+        auto pos_1 = query_descripton.find_first_not_of(' ');
+        auto pos_2 = query_descripton.find_last_not_of(' ');
+        std::string_view s = query_descripton.substr(pos_1, pos_2 + 1 - pos_1);
+
+        const auto b = tansport_catalogue.GetBusesFromStop(s);
+        if (!b) {
+            output << "Stop " << s << ": not found" << std::endl;
+        }
+        else {
+            if (b->empty()) {
+                output << "Stop " << s << ": no buses" << std::endl;
+            }
+            else {
+                output << "Stop " << s << ": buses ";
+                for (const auto a : *b) {
+                    output << a << " ";
+                }
+                output << std::endl;
+            }
+        }
+
+    }
 }

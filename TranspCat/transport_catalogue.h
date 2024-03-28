@@ -4,6 +4,7 @@
 #include <vector>
 #include <deque>
 #include <unordered_map>
+#include <unordered_set>
 #include <string_view>
 
 #include "geo.h"
@@ -24,13 +25,16 @@ public:
     Stop* FindStop(const std::string_view name) const;
     void AddBus(Bus&& b);
     Bus* FindBus(const std::string_view name) const;
-    
+
+    const std::unordered_set<std::string_view>* GetBusesFromStop(const std::string_view stop) const;
 private:       
     std::deque<Stop> stops_; //номенклатура остановок
     std::unordered_map<std::string_view, Stop*> stopname_to_stop_; //указатель на остановку по ее имени
         
     std::deque<Bus> buses_; //номенклатура маршрутов
     std::unordered_map<std::string_view, Bus*> busname_to_bus_; //указатель на автобус по номеру маршрута
+
+    std::unordered_map<std::string_view, std::unordered_set<std::string_view>> stop_to_buses_;
     /*
     struct HasherForDistanceMap {
         size_t operator() (std::pair<Stop*, Stop*> p) {
