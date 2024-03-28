@@ -15,8 +15,6 @@ struct Stop {
 struct Bus {
     std::string name;
     std::vector<Stop*> route;
-    bool is_ring;
-    size_t unique_stops;
 };
 
 class TransportCatalogue {
