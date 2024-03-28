@@ -2,6 +2,7 @@
 #include "geo.h"
 
 #include <string_view>
+#include <set>
 
 
 void TransportCatalogue::AddStop(Stop&& s) {	
@@ -24,7 +25,7 @@ void TransportCatalogue::AddBus(Bus&& b) {
 	}
 }
 
-const std::unordered_set<std::string_view>* TransportCatalogue::GetBusesFromStop(const std::string_view stop) const {
+const std::set<std::string_view>* TransportCatalogue::GetBusesFromStop(const std::string_view stop) const {
 	if (!stop_to_buses_.count(stop)) {
 		return nullptr;
 	}
