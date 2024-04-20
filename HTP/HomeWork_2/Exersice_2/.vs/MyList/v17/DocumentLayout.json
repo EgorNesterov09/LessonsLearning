@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{66FFD427-C8F2-4001-BCCC-5C7F237FC97D}|MyList.vcxproj|C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\single-linked-list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{66FFD427-C8F2-4001-BCCC-5C7F237FC97D}|MyList.vcxproj|solutionrelative:single-linked-list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66FFD427-C8F2-4001-BCCC-5C7F237FC97D}|MyList.vcxproj|C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{66FFD427-C8F2-4001-BCCC-5C7F237FC97D}|MyList.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 262,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{34c7837f-3b3a-449c-bdf0-bdad86cbaf4a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "single-linked-list.h",
+              "DocumentMoniker": "C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\single-linked-list.h",
+              "RelativeDocumentMoniker": "single-linked-list.h",
+              "ToolTip": "C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\single-linked-list.h",
+              "RelativeToolTip": "single-linked-list.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-20T20:17:08.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\egor.nesterov\\Desktop\\LessonsLearning\\HTP\\HomeWork_2\\Exersice_2\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-20T20:16:35.672Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
