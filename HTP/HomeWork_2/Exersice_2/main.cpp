@@ -332,12 +332,31 @@ void Test4() {
     }
 }
 
+void Test5() {
+
+    // Поиск заданного элемента
+    {
+        SingleLinkedList<int> lst{ 1, 5, 7, 2 };
+        auto pos = lst.Find(1);
+        auto it = lst.begin();
+        assert(pos == it);
+        assert(*pos == 1);
+        pos = lst.Find(5);
+        assert(pos == ++it);
+        assert(*pos == 5);
+
+        pos = lst.Find(10);
+        assert(pos == lst.end());
+    }
+}
+
 int main() {
     Test0();
     Test1();
     Test2();
     Test3();
-    Test4();
+    Test4(); 
+    Test5();
     std::cout << "Complete!" << std::endl;
     return 0;
 }

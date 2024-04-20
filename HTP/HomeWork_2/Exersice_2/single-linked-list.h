@@ -127,27 +127,6 @@ public:
     // Конструктор по умолчанию
     SingleLinkedList() = default;
 
-    // Конструктор из std::initializer_list
-    SingleLinkedList(std::initializer_list<Type> values) {
-        auto it = values.end();
-        --it;
-        for (; it >= values.begin(); --it) {
-            PushFront(*it);
-        }
-    }
-
-    // Копирующий конструктор
-    SingleLinkedList(const SingleLinkedList& other) {
-        assert(size_ == 0 && head_.next_node == nullptr);
-        SingleLinkedList tmp;
-        for (auto it = other.begin(); it != other.end(); ++it) {
-            tmp.PushFront(*it);
-        }
-        for (auto it = tmp.begin(); it != tmp.end(); ++it) {
-            PushFront(*it);
-        }
-    }
-
     // Деструктор
     ~SingleLinkedList() {
         Clear();
@@ -185,6 +164,27 @@ public:
             head_.next_node = tmp;
         }
         size_ = 0;
+    }
+
+    // Копирующий конструктор
+    SingleLinkedList(const SingleLinkedList& other) {
+        assert(size_ == 0 && head_.next_node == nullptr);
+        SingleLinkedList tmp;
+        for (auto it = other.begin(); it != other.end(); ++it) {
+            tmp.PushFront(*it);
+        }
+        for (auto it = tmp.begin(); it != tmp.end(); ++it) {
+            PushFront(*it);
+        }
+    }
+
+    // Конструктор из std::initializer_list
+    SingleLinkedList(std::initializer_list<Type> values) {
+        auto it = values.end();
+        --it;
+        for (; it >= values.begin(); --it) {
+            PushFront(*it);
+        }
     }
 
     // Копирующий оператор присваивания
@@ -261,6 +261,18 @@ public:
     // Разыменовывать этот итератор нельзя - попытка разыменования приведёт к неопределённому поведению
     [[nodiscard]] ConstIterator before_begin() const noexcept {
         return ConstIterator(&head_);
+    }
+
+    /*Как и у других линейных контейнеров, собственного метода find у списка нет. Это значит, что поиск 
+    будет осуществляться за линейное время и потребует прохода по всем элементам один за другим.*/
+    Iterator Find(const Type& value) {
+        Node* pos = &head_;
+        while (pos->value != value) {
+            if (pos = pos->next_node; pos == nullptr) {
+                return Iterator(nullptr);
+            }            
+        }
+        return Iterator(pos);
     }
 
     /*
