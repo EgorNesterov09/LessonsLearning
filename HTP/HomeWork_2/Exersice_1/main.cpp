@@ -9,7 +9,6 @@
 // (1 + 2) * 3 / 4 + 5 * (6 - 7)
 
 // 1. Токенизация
-// 2. Парсер (построение дерева разбора выражения)
 
 // +, -, *, /, %
 
@@ -45,7 +44,8 @@ struct Divide {};
 
 struct SqrtToken {};
 
-using TokenBase = std::variant<OpeningBracket, ClosingBracket, Number, UnknownToken, MinToken, AbsToken, MaxToken, Plus, Minus, Multiply, Modulo, Divide, SqrtToken, Comma>;
+using TokenBase = std::variant<OpeningBracket, ClosingBracket, Number, UnknownToken, MinToken, 
+                 AbsToken, MaxToken, Plus, Minus, Multiply, Modulo, Divide, SqrtToken, Comma>;
 
 struct Token : TokenBase {
     using TokenBase::TokenBase;
@@ -112,7 +112,7 @@ Number ParseNumber(const std::string& input, size_t& pos) {
 Token ParseName(const std::string& input, size_t& pos) { //min, max, abs, sqrt;
     std::string name;
     auto symbol = static_cast<unsigned char>(input[pos]);
-    while (std::isalpha(symbol)) {
+    while (!std::isspace(symbol) && symbol != '(') {
         name += symbol;
         if (pos == input.size() - 1) {
             ++pos;
@@ -136,24 +136,25 @@ std::vector<Token> Tokenize(const std::string& input) {
         ++pos;
     } else if (std::isdigit(symbol)) {
         tokens.emplace_back(ParseNumber(input, pos));
-    } else if (std::isalpha(symbol)) {
-        tokens.emplace_back(ParseName(input, pos));
     } else if (auto it = kSymbol2Token.find(symbol); it != kSymbol2Token.end()) {
         tokens.emplace_back(it->second);
         ++pos;
+    } else {
+        tokens.emplace_back(ParseName(input, pos));
     }
   }
   return tokens;
 }
 
 int main() {
-    //min(4, 1 + 16 / 2) + (1 + 2) + 3 * sqr(444) ->[min, (, 4, ',', 1, +, 16, *, 2, ), +, (, 1, +, 2, ), +, 3, *, SqrToken, (, 4, )]
-    std::string query = " min ( 4, 1 + 16 / 2 ) +(11   + 549832 )    + 3 *   sqrt   (444   ) ";
+    //min(4, 1 + 16 / 2) + (1 + 2) + 3 * sqr(444) + #7ds&y7 -> 
+    // -> [min, (, 4, ',', 1, +, 16, *, 2, ), +, (, 1, +, 2, ), +, 3, *, SqrToken, (, 4, ), +, #7ds&y7]
+    std::string query = "   min(4, 1 + 16 / 2 ) +(11   + 549832 )    + 3 *   sqrt   (444   ) +   #7ds&y7 ";
     std::vector<Token> tokens = Tokenize(query);
-    std::vector<Token> expected_tokens = { MinToken{}, OpeningBracket{}, Number{4}, Comma{}, Number{1}, Plus{}, Number{16}, Divide{}, 
+    std::vector<Token> expected_tokens = {  MinToken{}, OpeningBracket{}, Number{4}, Comma{}, Number{1}, Plus{}, Number{16}, Divide{},
                                             Number{2}, ClosingBracket{}, Plus{}, OpeningBracket{},  Number{11}, Plus{}, Number{549832}, 
                                             ClosingBracket{}, Plus{}, Number{3}, Multiply{}, SqrtToken{}, OpeningBracket{}, Number{444}, 
-                                            ClosingBracket{} };
+                                            ClosingBracket{}, Plus{}, UnknownToken {"#7ds&y7"} };
     assert(tokens == expected_tokens);
     std::cout << "Comlete" << std::endl;
 }
