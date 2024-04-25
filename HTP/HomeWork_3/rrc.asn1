@@ -1,0 +1,10 @@
+Class-definitions DEFINITIONS AUTOMATIC TAGS ::=
+
+BEGIN
+
+RRCSetupRequest ::= SEQUENCE {
+    rrcSerupRequest         INTEGER
+}
+
+
+END
